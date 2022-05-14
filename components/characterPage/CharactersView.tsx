@@ -18,7 +18,8 @@ export const CharactersView = () => {
 
   return (
     <div className="bg-gray-50 flex flex-col">
-      characters
+      <h1 className="block w-full text-left mb-4 text-3xl font-medium text-gray-900">Who are you looking for?
+</h1>
       <span>{data.info.pages || ""}</span>
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 mx-auto">
         {data &&
