@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Navbar } from "./Navbar";
 
 export interface LayoutProps {
   children?: ReactNode[] | ReactNode;
@@ -7,7 +8,7 @@ export interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <nav>navigation</nav>
+      <Navbar/>
       <h1>header</h1>
       <main className="grow py-4 text-center">{children}</main>
     </div>
