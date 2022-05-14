@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { CharacterItem } from "../CharacterItem";
+import { CharacterItem } from "./CharacterItem";
 import { ICharacter } from "../../interfaces/interfaces";
 import { Services } from "../../services/services";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ICharacter } from "../interfaces/interfaces";
+import { ICharacter } from "../../interfaces/interfaces";
 import Image from "next/image";
 
 interface CharacterItemProps {
