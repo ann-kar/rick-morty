@@ -9,8 +9,7 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen w-full">
       <Navbar/>
-      <h1>header</h1>
-      <main className="grow py-4 text-center">{children}</main>
+      <main className="grow p-4 text-center">{children}</main>
     </div>
   );
 };
