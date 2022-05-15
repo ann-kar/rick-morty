@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useInfiniteQuery } from "react-query";
-import { ICharacter, Status } from "../interfaces/interfaces";
+import { Gender, ICharacter, Status } from "../interfaces/interfaces";
 import { Services } from "../services/services";
 import { CharacterItem } from "./characterPage/CharacterItem";
 
 export const SearchResults = ({
   nameQuery,
   status,
+  gender
 }: {
   nameQuery: string;
   status: Status | "";
+  gender: Gender | "";
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const {
@@ -20,11 +22,12 @@ export const SearchResults = ({
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery(
-    ["getCharacters", { name: nameQuery, status: status }],
+    ["getCharacters", { name: nameQuery, status: status, gender: gender }],
     ({ pageParam = 1 }) =>
       Services.getCharacters({
         name: nameQuery,
         status: status,
+        gender: gender,
         pageParam: pageParam,
       }),
     {

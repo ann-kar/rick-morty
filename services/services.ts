@@ -19,10 +19,12 @@ export class Services {
   static async getCharacters({
     name,
     status,
+    gender,
     pageParam,
   }: {
     name: string;
     status: Status | "";
+    gender: Gender | "";
     pageParam: any;
   }) {
     const params: IFilters = {};
@@ -30,6 +32,7 @@ export class Services {
       params.name = name;
     }
     params.status = status;
+    params.gender = gender;
     params.page = pageParam;
     const res = await axios.get(url, { params: params });
     return res.data;
