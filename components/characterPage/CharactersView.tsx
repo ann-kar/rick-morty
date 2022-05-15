@@ -13,7 +13,7 @@ export const CharactersView = () => {
         Who are you looking for?
       </h1>
       <SearchBox setNameQuery={setNameQuery} setStatus={setStatus} />
-      <SearchResults nameQuery={nameQuery} />
+      <SearchResults nameQuery={nameQuery} status={status}/>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
-import { ICharacter } from "../interfaces/interfaces";
+import { ICharacter, Status } from "../interfaces/interfaces";
 import { Services } from "../services/services";
 import { CharacterItem } from "./characterPage/CharacterItem";
 
-export const SearchResults = ({ nameQuery }: { nameQuery: string }) => {
+export const SearchResults = ({ nameQuery, status }: { nameQuery: string, status: Status | undefined }) => {
   const { isLoading, error, data } = useQuery(
-    ["getCharacters", {name: nameQuery}],
-    () => Services.getCharacters({name:nameQuery})
+    ["getCharacters", {name: nameQuery, status: status}],
+    () => Services.getCharacters({name:nameQuery, status: status})
   );
 
   if (isLoading) {
