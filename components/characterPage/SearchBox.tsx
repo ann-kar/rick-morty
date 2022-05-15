@@ -1,11 +1,14 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
-export const SearchBox = () => {
-  const [nameQuery, setNameQuery] = useState("");
+export const SearchBox = ({ setNameQuery }: any) => {
+  const [query, setQuery] = useState("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setNameQuery(value);
+    setQuery(e.target.value);
+    if (e.target.value.length > 2) {
+      setNameQuery(e.target.value);
+    }
   };
 
   return (
@@ -13,7 +16,7 @@ export const SearchBox = () => {
       <div>
         <input
           name="nameInput"
-          value={nameQuery}
+          value={query}
           onChange={handleChange}
           placeholder={"Enter name"}
           className="border border-gray-300 text-gray-900 text-lg rounded-lg block p-2.5"
