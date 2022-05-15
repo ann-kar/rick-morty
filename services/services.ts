@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Gender, Status } from "../interfaces/interfaces";
+import qs from "qs";
 
 const url = "https://rickandmortyapi.com/api/character/";
 
@@ -34,7 +35,12 @@ export class Services {
     params.status = status;
     params.gender = gender;
     params.page = pageParam;
-    const res = await axios.get(url, { params: params });
+    const res = await axios.get(url, {
+      params: params,
+      paramsSerializer: (params) => {
+        return qs.stringify(params);
+      },
+    });
     return res.data;
   }
 }
