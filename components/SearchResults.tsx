@@ -9,7 +9,7 @@ export const SearchResults = ({
   status,
 }: {
   nameQuery: string;
-  status: Status | undefined;
+  status: Status | "";
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const {

@@ -3,7 +3,7 @@ import { Status, statusArray } from "../../interfaces/interfaces";
 
 interface SearchBoxProps {
   setNameQuery: Dispatch<SetStateAction<string>>;
-  setStatus: Dispatch<SetStateAction<Status | undefined>>;
+  setStatus: Dispatch<SetStateAction<Status | "">>;
 }
 
 export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
@@ -17,11 +17,10 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
   };
 
   const handleStatus = (e: ChangeEvent<HTMLSelectElement>) => {
-    if (
-      statusArray.find((el) => el === e.target.value) ||
-      e.target.value === undefined
-    ) {
-      setStatus((e.target.value as Status) || undefined);
+    if (statusArray.find((el) => el === e.target.value)) {
+      setStatus(e.target.value as Status);
+    } else {
+      setStatus("");
     }
   };
 
@@ -41,7 +40,7 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
         name="status"
         id="status"
         onChange={handleStatus}>
-        <option value={undefined} className="text-gray-600">
+        <option value={""} className="text-gray-600">
           any
         </option>
         {statusArray.map((status) => {
