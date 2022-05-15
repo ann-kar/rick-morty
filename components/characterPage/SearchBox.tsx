@@ -1,5 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { Status, statusArray } from "../../interfaces/interfaces";
+import { NameQuery } from "../NameQuery";
 
 interface SearchBoxProps {
   setNameQuery: Dispatch<SetStateAction<string>>;
@@ -27,13 +28,7 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
   return (
     <div className="m-4 mb-8 flex flex-wrap gap-3">
       <div>
-        <input
-          name="nameInput"
-          value={query}
-          onChange={handleChange}
-          placeholder={"Enter name"}
-          className="border border-gray-300 text-gray-900 text-lg rounded-lg block p-2.5"
-        />
+        <NameQuery query={query} handleChange={handleChange} />
       </div>
       <select
         className="text-gray-600 text-lg p-2.5 pr-6 border-2 rounded-lg bg-gray-100"
