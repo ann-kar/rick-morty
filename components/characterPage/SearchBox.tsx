@@ -17,9 +17,11 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
   };
 
   const handleStatus = (e: ChangeEvent<HTMLSelectElement>) => {
-
-    if (statusArray.find((el) => el === e.target.value) || e.target.value === undefined) {
-      setStatus(e.target.value as Status || undefined);
+    if (
+      statusArray.find((el) => el === e.target.value) ||
+      e.target.value === undefined
+    ) {
+      setStatus((e.target.value as Status) || undefined);
     }
   };
 
