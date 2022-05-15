@@ -1,13 +1,9 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { Status, statusArray } from "../../interfaces/interfaces";
 
 interface SearchBoxProps {
   setNameQuery: Dispatch<SetStateAction<string>>;
-  setStatus: Dispatch<SetStateAction<string>>;
+  setStatus: Dispatch<SetStateAction<Status | undefined>>;
 }
 
 export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
@@ -21,8 +17,9 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
   };
 
   const handleStatus = (e: ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value.length > 0) {
-      setStatus(e.target.value);
+
+    if (statusArray.find((el) => el === e.target.value) || e.target.value === undefined) {
+      setStatus(e.target.value as Status || undefined);
     }
   };
 
@@ -42,12 +39,16 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
         name="status"
         id="status"
         onChange={handleStatus}>
-        <option value="" className="text-gray-600">
+        <option value={undefined} className="text-gray-600">
           any
         </option>
-        <option value="Dead">dead</option>
-        <option value="Alive">alive</option>
-        <option value="unknown">unknown</option>
+        {statusArray.map((status) => {
+          return (
+            <option key={status} value={status}>
+              {status}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
