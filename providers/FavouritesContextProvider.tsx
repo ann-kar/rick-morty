@@ -1,5 +1,6 @@
 import React, { useContext, useState, createContext, ReactNode } from "react";
 import { ICharacter } from "../interfaces/interfaces";
+import { produce } from "immer";
 
 interface IFavouritesContext {
   favourites: ICharacter[];
@@ -17,13 +18,21 @@ export function FavouritesContextProvider({
   const [favourites, setFavourites] = useState<ICharacter[]>([]);
 
   const addToFavourites = (character: ICharacter) => {
-    setFavourites((prevFavs) => [...prevFavs, character]);
+    setFavourites(
+      produce((draft) => {
+        return [...draft, character];
+      })
+    );
   };
+
   const removeFromFavourites = (id: number) => {
-    let tempFavs = favourites;
-    let filtered = tempFavs.filter((char) => char.id !== id);
-    setFavourites(filtered);
+    setFavourites(
+      produce((draft) => {
+        return draft.filter((character) => character.id !== id);
+      })
+    );
   };
+
   return (
     <FavouritesContext.Provider
       value={{
