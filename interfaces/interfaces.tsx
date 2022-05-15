@@ -1,4 +1,6 @@
-export type Status = "Dead" | "Alive" | "unknown";
+export const statusArray = ["Dead", "Alive", "unknown"] as const;
+export type Status = typeof statusArray[number];
+
 export type Gender = "Female" | "Male" | "Genderless" | "unknown";
 
 export interface IServices {
