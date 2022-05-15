@@ -1,5 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { Status, statusArray } from "../../interfaces/interfaces";
+import { Filter } from "../Filter";
 import { NameQuery } from "../NameQuery";
 
 interface SearchBoxProps {
@@ -10,7 +11,7 @@ interface SearchBoxProps {
 export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
   const [query, setQuery] = useState("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleQuery = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
     if (e.target.value.length > 2) {
       setNameQuery(e.target.value);
@@ -28,24 +29,9 @@ export const SearchBox = ({ setNameQuery, setStatus }: SearchBoxProps) => {
   return (
     <div className="m-4 mb-8 flex flex-wrap gap-3">
       <div>
-        <NameQuery query={query} handleChange={handleChange} />
+        <NameQuery query={query} handleChange={handleQuery} />
       </div>
-      <select
-        className="text-gray-600 text-lg p-2.5 pr-6 border-2 rounded-lg bg-gray-100"
-        name="status"
-        id="status"
-        onChange={handleStatus}>
-        <option value={""} className="text-gray-600">
-          any
-        </option>
-        {statusArray.map((status) => {
-          return (
-            <option key={status} value={status}>
-              {status}
-            </option>
-          );
-        })}
-      </select>
+      <Filter name={"status"} onChange={handleStatus} options={statusArray} />
     </div>
   );
 };
