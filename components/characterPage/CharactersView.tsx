@@ -4,13 +4,14 @@ import { SearchResults } from "../SearchResults";
 
 export const CharactersView = () => {
   const [nameQuery, setNameQuery] = useState("");
+  const [status, setStatus] = useState("");
 
   return (
     <div className="bg-gray-50 flex flex-col">
       <h1 className="block w-full text-left mb-4 text-3xl font-medium text-gray-900">
         Who are you looking for?
       </h1>
-      <SearchBox setNameQuery={setNameQuery} />
+      <SearchBox setNameQuery={setNameQuery} setStatus={setStatus} />
       <SearchResults nameQuery={nameQuery} />
     </div>
   );
