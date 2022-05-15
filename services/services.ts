@@ -4,6 +4,11 @@ import { ICharacterFilter, Status } from "../interfaces/interfaces";
 const url = "https://rickandmortyapi.com/api/character/";
 
 export class Services {
+  static async getCharacter({ id }: { id: number }) {
+    const res = await axios.get(url + id);
+    return res.data;
+  }
+
   static async getCharacters({
     name,
     status,
