@@ -5,8 +5,8 @@ import { CharacterItem } from "./characterPage/CharacterItem";
 
 export const SearchResults = ({ nameQuery }: { nameQuery: string }) => {
   const { isLoading, error, data } = useQuery(
-    ["getCharacters", nameQuery],
-    () => Services.getCharacters(nameQuery)
+    ["getCharacters", {name: nameQuery}],
+    () => Services.getCharacters({name:nameQuery})
   );
 
   if (isLoading) {

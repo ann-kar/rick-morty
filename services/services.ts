@@ -4,10 +4,10 @@ import { ICharacterFilter } from "../interfaces/interfaces";
 const url = "https://rickandmortyapi.com/api/character/";
 
 export class Services {
-  static async getCharacters(nameQuery:string) {
+  static async getCharacters({name}: {name:string}) {
     const params: ICharacterFilter = {};
-    if (nameQuery) {
-      params.name = nameQuery;
+    if (name) {
+      params.name = name;
     }
 
     const res = await axios.get(url, { params: params });
