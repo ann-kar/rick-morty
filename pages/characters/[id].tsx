@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useQuery } from "react-query";
+import { FavButton } from "../../components/FavButton";
 import { Services } from "../../services/services";
 
 export const CharacterProfile = () => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
-
   const router = useRouter();
   const { id } = router.query;
 
@@ -27,7 +25,6 @@ export const CharacterProfile = () => {
   return (
     <div className="border-0">
       <img src={data.image} className="mx-auto w-full sm:w-72" />
-
       <span className="text-2xl font-bold p-1">{data.name}</span>
       <p> {data.status}</p>
       <p> {data.species} </p>
@@ -36,9 +33,7 @@ export const CharacterProfile = () => {
       <p>{data.origin.name}</p>
       <p>{data.location.name}</p>
       <p>appears first in episode: {data.episode[0]}</p>
-      <button id={data.name}>
-        {isClicked ? "remove" : "add to favorites"}
-      </button>
+      <FavButton data={data}/>
     </div>
   );
 };

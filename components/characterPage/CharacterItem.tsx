@@ -3,30 +3,31 @@ import { ICharacter } from "../../interfaces/interfaces";
 import Image from "next/image";
 import { useFavourites } from "../../providers/FavouritesContextProvider";
 import Link from "next/link";
+import { FavButton } from "../FavButton";
 
 interface CharacterItemProps {
   data: ICharacter;
 }
 
 export const CharacterItem = ({ data }: CharacterItemProps) => {
-  const { addToFavourites, removeFromFavourites, favourites } = useFavourites();
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  // const { addToFavourites, removeFromFavourites, favourites } = useFavourites();
+  // const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (favourites.find((favCharacter) => favCharacter.id === data.id)) {
-      setIsClicked(true);
-    }
-  }, [data.id, favourites]);
+  // useEffect(() => {
+  //   if (favourites.find((favCharacter) => favCharacter.id === data.id)) {
+  //     setIsClicked(true);
+  //   }
+  // }, [data.id, favourites]);
 
-  const handleClick = () => {
-    if (isClicked) {
-      removeFromFavourites(data.id);
-      setIsClicked(false);
-    } else {
-      addToFavourites(data);
-      setIsClicked(true);
-    }
-  };
+  // const handleClick = () => {
+  //   if (isClicked) {
+  //     removeFromFavourites(data.id);
+  //     setIsClicked(false);
+  //   } else {
+  //     addToFavourites(data);
+  //     setIsClicked(true);
+  //   }
+  // };
 
   return (
     <div className="rounded-md w-50 h-50">
@@ -47,12 +48,13 @@ export const CharacterItem = ({ data }: CharacterItemProps) => {
           />
         </a>
       </Link>
-      <button
+      <FavButton data={data}/>
+      {/* <button
         className="rounded-xl shadow-md bg-gray-100 text-gray-900 text-sm p-2 px-6 m-1"
         id={data.name}
         onClick={handleClick}>
         {isClicked ? "remove" : "add"}
-      </button>
+      </button> */}
     </div>
   );
 };
