@@ -8,10 +8,10 @@ export const Filter = ({name, onChange, options }:any) => {
         <option value={""} className="text-gray-600">
           any
         </option>
-        {options.map((status:any) => {
+        {options.map((option:any) => {
           return (
-            <option key={status} value={status}>
-              {status}
+            <option key={option} value={option}>
+              {option}
             </option>
           );
         })}
