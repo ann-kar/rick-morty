@@ -40,8 +40,13 @@ export const SearchResults = ({
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
+  if (error && nameQuery.length > 2) {
+    return <div>I haven&apos;t heard of such a being. And I know everything, mind you.</div>
+  }
+
   if (error) {
-    return <div>An error has occurred.</div>;
+    return <div>Sorry, it seems I have trouble accessing my memory today.</div>;
   }
 
   return (
