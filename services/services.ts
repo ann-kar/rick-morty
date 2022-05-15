@@ -7,9 +7,11 @@ export class Services {
   static async getCharacters({
     name,
     status,
+    pageParam,
   }: {
     name: string;
     status: Status | undefined;
+    pageParam: any;
   }) {
     const params: ICharacterFilter = {};
     if (name) {
@@ -20,6 +22,7 @@ export class Services {
     } else {
       delete params.status;
     }
+    params.page = pageParam;
     const res = await axios.get(url, { params: params });
     return res.data;
   }
