@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
+import { CharacterImage } from "../../components/CharacterImage";
 import { FavButton } from "../../components/FavButton";
 import { Services } from "../../services/services";
 
@@ -24,7 +25,7 @@ export const CharacterProfile = () => {
 
   return (
     <div className="border-0">
-      <img src={data.image} className="mx-auto w-full sm:w-72" />
+      <CharacterImage alt={data.name} src={data.image} type={"profile"} />
       <span className="text-2xl font-bold p-1">{data.name}</span>
       <p> {data.status}</p>
       <p> {data.species} </p>
@@ -33,7 +34,7 @@ export const CharacterProfile = () => {
       <p>{data.origin.name}</p>
       <p>{data.location.name}</p>
       <p>appears first in episode: {data.episode[0]}</p>
-      <FavButton data={data}/>
+      <FavButton data={data} />
     </div>
   );
 };
