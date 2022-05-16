@@ -4,7 +4,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        getSchwifty: ["GetSchwifty"],
+        sans: ["Helvetica", "GetSchwifty", "sans-serif"],
+      },
+      colors: {
+        powderblue: "#00b5cc",
+        toxicgreen: "#91a126",
+      },
+    },
   },
   plugins: [],
-}
+};
