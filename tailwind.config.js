@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         powderblue: "#00b5cc",
         toxicgreen: "#91a126",
+        khaki: "#e6e887"
       },
     },
   },
