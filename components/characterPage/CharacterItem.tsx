@@ -10,7 +10,7 @@ interface CharacterItemProps {
 
 export const CharacterItem = ({ data }: CharacterItemProps) => {
   return (
-    <div className="rounded-md w-50 h-50">
+    <div className="rounded-md w-full sm:w-44 h-60 2xl:w-52 2xl:h-68 flex flex-col items-center justify-between">
       <Link
         href={{
           pathname: "/characters/[id]/",
@@ -18,8 +18,8 @@ export const CharacterItem = ({ data }: CharacterItemProps) => {
         }}
         key={data.id}>
         <a>
-          <div className="font-bold py-2">{data.name}</div>
-          <CharacterImage alt={data.name} src={data.image} type={"avatar"} />
+          <CharacterImage alt={data.name} src={data.image} type={"avatar"} characterStatus={data.status} />
+          <div className="h-10 font-bold text-sm flex items-center justify-center text-center uppercase m-1 text-zinc-600">{data.name}</div>
         </a>
       </Link>
       <FavButton data={data} />
