@@ -3,8 +3,8 @@ import { InputLabel } from "./InputLabel";
 
 interface FilterProps {
   name: string;
-  onChange: () => void;
-  options: Array<string>;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  options: Readonly<Array<string>>
 }
 
 export const Filter = ({ name, onChange, options }: FilterProps) => {
