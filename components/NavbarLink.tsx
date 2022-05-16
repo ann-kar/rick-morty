@@ -14,7 +14,7 @@ export const NavbarLink = ({ label, href }: NavbarLinkProps) => {
     <Link href={href}>
       <a
         className={
-          asPath === href ? "text-green-600 font-bold" : "text-slate-600"
+          asPath === href ? "text-powderblue font-bold" : "text-zinc-600"
         }>
         {label}
       </a>
