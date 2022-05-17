@@ -9,7 +9,7 @@ const FavouriteCharactersPage = () => {
 
   return (
     <div className="flex flex-col">
-      <Hero shortLabel={"the best of"} longLabel={"your favourites from"}>
+      <Hero header={"Your favourites!"} subheader={""}>
         <HeroImage
           src="/favourites.png"
           alt="main graphic: Morty and Rick happy"

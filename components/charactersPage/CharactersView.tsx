@@ -12,7 +12,8 @@ export const CharactersView = () => {
 
   return (
     <div className="flex flex-col">
-      <Hero shortLabel={"who is who in"} longLabel={"look up who is who in"}>
+      <Hero header={"See who is who!"}
+      subheader={""}>
         <HeroImage
           src="/open-your-eyes.png"
           alt="main graphic: Open your eyes, Morty!"

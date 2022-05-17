@@ -1,16 +1,12 @@
 interface HeroHeaderProps {
-  shortLabel: string;
-  longLabel: string;
+  label: string;
 }
 
-export const HeroHeader = ({ shortLabel, longLabel }: HeroHeaderProps) => {
+export const HeroHeader = ({ label }: HeroHeaderProps) => {
   return (
     <>
-      <div className="md:hidden text-xl sm:text-2xl w-full font-getSchwifty text-zinc-600 font-bold my-3">
-        {shortLabel}
-      </div>
-      <div className="hidden md:block md:text-3xl lg:text-4xl xl:text-5xl w-full font-getSchwifty text-zinc-600 font-bold my-3">
-        {longLabel}
+      <div className="text-2xl sm:text-4xl font-extrabold py-6 text-center sm:text-left text-powderblue">
+        {label}
       </div>
     </>
   );

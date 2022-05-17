@@ -1,29 +1,25 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import { HeroHeader } from "./HeroHeader";
+import { HeroSubheader } from "./HeroSubheader";
 
 interface HeroProps {
-  shortLabel: string;
-  longLabel: string;
+  header: string;
+  subheader: string;
   children: ReactNode | ReactNode[];
 }
 
-export const Hero = ({ shortLabel, longLabel, children }: HeroProps) => {
+export const Hero = ({ header, subheader, children }: HeroProps) => {
   return (
-    <div className="w-full  max-h-72 flex bg-gray-100">
-      <div className="w-full flex flex-wrap justify-end items-center">
-        <div className="w-4/5">
-          <HeroHeader shortLabel={shortLabel} longLabel={longLabel} />
-          <Image
-            src="/logo.svg"
-            className="m-6"
-            alt="Rick and Morty"
-            width="380px"
-            height="100px"
-          />
+    <div className="w-full max-h-72 flex bg-gray-100">
+      <div className="w-full flex flex-wrap justify-center xl:justify-end items-center">
+        <div className="w-4/5 pt-6 sm:text-left">
+          <Image src="/logo.svg" alt="rick and morty logo" width="200px" height="50px" className="sm:hidden"/>
+           <HeroHeader label={header} />
+           <HeroSubheader label={subheader}/>
         </div>
       </div>
-      <div className="w-full">{children}</div>
+      <div className="hidden sm:block w-full">{children}</div>
     </div>
   );
 };
