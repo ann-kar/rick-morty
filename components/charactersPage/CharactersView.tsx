@@ -18,7 +18,7 @@ export const CharactersView = () => {
           alt="main graphic: Open your eyes, Morty!"
         />
       </Hero>
-      <div className="w-full xl:max-w-7xl mx-auto">
+      <div className="w-full xl:max-w-7xl mx-auto flex justify-start">
         <SearchBox
           setNameQuery={setNameQuery}
           setStatus={setStatus}
