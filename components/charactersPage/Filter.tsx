@@ -12,7 +12,7 @@ export const Filter = ({ name, onChange, options }: FilterProps) => {
     <div>
       <InputLabel label={name} />
       <select
-        className="text-gray-600 text-lg p-2.5 pr-6 border-2 rounded-lg bg-gray-100"
+        className="text-gray-600 text-lg p-2 pr-6 border-2 rounded-lg bg-gray-100"
         name={name}
         id={name}
         onChange={onChange}>

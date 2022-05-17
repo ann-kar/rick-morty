@@ -14,7 +14,7 @@ export const NameQuery = ({ query, handleChange }: NameQueryProps) => (
       value={query}
       onChange={handleChange}
       placeholder={"Enter name"}
-      className="border border-gray-300 text-gray-900 text-lg rounded-lg block p-2.5"
+      className="border border-gray-300 text-gray-900 text-md rounded-lg block p-2"
     />
   </>
 );
