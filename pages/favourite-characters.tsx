@@ -24,7 +24,7 @@ const FavouriteCharactersPage = () => {
           })}
         </div>
       ) : (
-        <div className="p-10 font-semibold text-sm text-center text-zinc-600">
+        <div className="p-10 font-semibold text-sm sm:text-md lg:text-lg text-center text-zinc-600">
           It seems that you don&apos;t like anyone. But you can always change
           that!
         </div>
