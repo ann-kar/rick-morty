@@ -4,6 +4,8 @@ import { Gender, ICharacter, Status } from "../interfaces/interfaces";
 import { Services } from "../services/services";
 import { CharacterItem } from "./charactersPage/CharacterItem";
 import { LoadMore } from "./LoadMore";
+import {Error} from "./Error";
+import {Loading} from "./Loading";
 
 export const SearchResults = ({
   nameQuery,
@@ -47,14 +49,12 @@ export const SearchResults = ({
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   if (error && nameQuery.length > 2) {
     return (
-      <div>
-        I haven&apos;t heard of such a being. And I know everything, mind you.
-      </div>
+      <Error/>
     );
   }
 
