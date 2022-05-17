@@ -12,8 +12,11 @@ export const CharactersView = () => {
 
   return (
     <div className="flex flex-col">
-      <Hero header={"See who is who!"}
-      subheader={""}>
+      <Hero
+        header={"See who is who!"}
+        subheader={
+          "The ultimate collection of all Rick and Morty characters, dead and alive, human and inhuman, genderless and genderful. See who you can find!"
+        }>
         <HeroImage
           src="/open-your-eyes.png"
           alt="main graphic: Open your eyes, Morty!"
