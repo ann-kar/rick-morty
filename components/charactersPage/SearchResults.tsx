@@ -4,8 +4,8 @@ import { Gender, ICharacter, Status } from "../../interfaces/interfaces";
 import { Services } from "../../services/services";
 import { CharacterItem } from "./CharacterItem";
 import { LoadMore } from "./LoadMore";
-import {Error} from "../Error";
-import {Loading} from "../Loading";
+import { Error } from "../Error";
+import { Loading } from "../Loading";
 
 export const SearchResults = ({
   nameQuery,
@@ -49,17 +49,15 @@ export const SearchResults = ({
   };
 
   if (isLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   if (error && nameQuery.length > 2) {
-    return (
-      <Error/>
-    );
+    return <Error type="no-results" />;
   }
 
   if (error) {
-    return <div>Sorry, it seems I have trouble accessing my memory today.</div>;
+    return <Error />;
   }
 
   return (
