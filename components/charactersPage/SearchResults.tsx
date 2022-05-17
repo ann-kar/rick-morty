@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useInfiniteQuery } from "react-query";
-import { Gender, ICharacter, Status } from "../interfaces/interfaces";
-import { Services } from "../services/services";
-import { CharacterItem } from "./charactersPage/CharacterItem";
+import { Gender, ICharacter, Status } from "../../interfaces/interfaces";
+import { Services } from "../../services/services";
+import { CharacterItem } from "./CharacterItem";
 import { LoadMore } from "./LoadMore";
-import {Error} from "./Error";
-import {Loading} from "./Loading";
+import {Error} from "../Error";
+import {Loading} from "../Loading";
 
 export const SearchResults = ({
   nameQuery,

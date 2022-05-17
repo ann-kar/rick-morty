@@ -1,7 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { Gender, genderArray, Status, statusArray } from "../../interfaces/interfaces";
-import { Filter } from "../Filter";
-import { NameQuery } from "../NameQuery";
+import { Filter } from "./Filter";
+import { NameQuery } from "./NameQuery";
 
 interface SearchBoxProps {
   setNameQuery: Dispatch<SetStateAction<string>>;

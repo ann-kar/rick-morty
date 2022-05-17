@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ReactNode } from "react";
-import { HeroHeader } from "./heroSection/HeroHeader";
+import { HeroHeader } from "./HeroHeader";
 
 interface HeroProps {
   shortLabel: string;

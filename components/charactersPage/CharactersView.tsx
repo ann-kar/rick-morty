@@ -1,8 +1,8 @@
 import { SearchBox } from "./SearchBox";
 import { useState } from "react";
-import { SearchResults } from "../SearchResults";
+import { SearchResults } from "./SearchResults";
 import { Gender, Status } from "../../interfaces/interfaces";
-import { Hero } from "../Hero";
+import { Hero } from "../heroSection/Hero";
 import { HeroImage } from "../heroSection/HeroImage";
 
 export const CharactersView = () => {

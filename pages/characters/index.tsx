@@ -1,4 +1,4 @@
-import { CharactersView } from "../../components/characterPage/CharactersView";
+import { CharactersView } from "../../components/charactersPage/CharactersView";
 
 const CharactersPage = () => {
   return <CharactersView />;

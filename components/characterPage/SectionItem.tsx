@@ -1,4 +1,4 @@
-import { InputLabel } from "../InputLabel";
+import { InputLabel } from "../charactersPage/InputLabel";
 
 interface SectionItemProps {
   label: string;

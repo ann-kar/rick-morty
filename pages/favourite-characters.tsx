@@ -1,7 +1,7 @@
 import { CharacterItem } from "../components/charactersPage/CharacterItem";
 import { ICharacter } from "../interfaces/interfaces";
 import { useFavourites } from "../providers/FavouritesContextProvider";
-import { Hero } from "../components/Hero";
+import { Hero } from "../components/heroSection/Hero";
 import { HeroImage } from "../components/heroSection/HeroImage";
 
 const FavouriteCharactersPage = () => {
