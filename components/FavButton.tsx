@@ -26,7 +26,7 @@ export const FavButton = ({ data }: { data: ICharacter }) => {
     };
     return (
       <button
-        className={`md:w-4/5 mx-auto rounded-xl  shadow-none bg-gradient-to-br from-gray-50 to-gray-300/70 text-gray-400 text-lg p-2 px-3 m-1 hover:text-emerald-500 active:scale-90 duration-75
+        className={`min-w-32 max-w-36 max-h-16 mx-auto rounded-xl shadow-none bg-gradient-to-br from-gray-50 to-gray-300/70 text-gray-400 text-lg p-2 px-3 m-1 hover:text-emerald-500 active:scale-90 duration-75
       ${isClicked && "font-extrabold from-white to-emerald-600/30"}`}
         id={data.name}
         onClick={handleClick}>
