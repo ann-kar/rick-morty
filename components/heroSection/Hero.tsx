@@ -14,9 +14,16 @@ export const Hero = ({ header, subheader, children }: HeroProps) => {
     <div className="w-full max-h-72 flex bg-gray-100">
       <div className="w-full flex flex-wrap justify-center xl:justify-end items-center">
         <div className="w-4/5 pt-6 sm:text-left">
-          <Image src="/logo.svg" alt="rick and morty logo" width="200px" height="50px" className="sm:hidden"/>
-           <HeroHeader label={header} />
-           <HeroSubheader label={subheader}/>
+          <div className="sm:hidden">
+            <Image
+              src="/logo.svg"
+              alt="rick and morty logo"
+              width="200px"
+              height="50px"
+            />
+          </div>
+          <HeroHeader label={header} />
+          <HeroSubheader label={subheader} />
         </div>
       </div>
       <div className="hidden sm:block w-full">{children}</div>
