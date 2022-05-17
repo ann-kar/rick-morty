@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useInfiniteQuery } from "react-query";
 import { Gender, ICharacter, Status } from "../interfaces/interfaces";
 import { Services } from "../services/services";
-import { CharacterItem } from "./characterPage/CharacterItem";
+import { CharacterItem } from "./charactersPage/CharacterItem";
 import { LoadMore } from "./LoadMore";
 
 export const SearchResults = ({
@@ -64,6 +64,12 @@ export const SearchResults = ({
 
   return (
     <div className="flex flex-wrap justify-center">
+      <h2 className="w-full text-xs sm:text-sm font-bold tracking-wide uppercase text-slate-700 text-left p-5 pt-0 mb-4">
+        Number of relevant beings:{" "}
+        <strong className="font-extrabold text-md">
+          {data?.pages[0].info.count}
+        </strong>
+      </h2>
       <div className="grid xl:max-w-7xl px-4 grid-cols-2 grid-flow-row xs:grid-cols-3  sm:grid-cols-4 md:grid-cols-5 gap-4 mx-auto">
         {data &&
           data.pages.map((page) =>
