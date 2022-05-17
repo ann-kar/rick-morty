@@ -1,8 +1,7 @@
 import { ICharacter } from "../../interfaces/interfaces";
-import Image from "next/image";
 import Link from "next/link";
 import { FavButton } from "../FavButton";
-import { CharacterImage } from "../CharacterImage";
+import { CharacterImage } from "./CharacterImage";
 
 interface CharacterItemProps {
   data: ICharacter;
@@ -18,8 +17,14 @@ export const CharacterItem = ({ data }: CharacterItemProps) => {
         }}
         key={data.id}>
         <a>
-          <CharacterImage alt={data.name} src={data.image} type={"avatar"} characterStatus={data.status} />
-          <div className="h-10 font-bold text-sm flex items-center justify-center text-center uppercase m-1 text-zinc-600">{data.name}</div>
+          <CharacterImage
+            alt={data.name}
+            src={data.image}
+            characterStatus={data.status}
+          />
+          <div className="h-10 font-bold text-sm flex items-center justify-center text-center uppercase m-1 text-zinc-600">
+            {data.name}
+          </div>
         </a>
       </Link>
       <FavButton data={data} />
