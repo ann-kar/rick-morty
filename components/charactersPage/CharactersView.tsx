@@ -1,11 +1,11 @@
 import { SearchBox } from "./SearchBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchResults } from "./SearchResults";
 import { Gender, ICharacter, IInfo, Status } from "../../interfaces/interfaces";
 import { Hero } from "../heroSection/Hero";
 import { HeroImage } from "../heroSection/HeroImage";
 
-export const CharactersView = ({data}:{data: IInfo<ICharacter[]>}) => {
+export const CharactersView = ({initialData}:{initialData:IInfo<ICharacter[]>}) => {
   const [nameQuery, setNameQuery] = useState("");
   const [status, setStatus] = useState<Status | "">("");
   const [gender, setGender] = useState<Gender | "">("");
@@ -29,7 +29,7 @@ export const CharactersView = ({data}:{data: IInfo<ICharacter[]>}) => {
           setGender={setGender}
         />
       </div>
-      <SearchResults initialData={data} nameQuery={nameQuery} status={status} gender={gender} />
+      <SearchResults nameQuery={nameQuery} status={status} gender={gender} initialData={initialData} />
     </div>
   );
 };

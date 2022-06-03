@@ -8,15 +8,15 @@ import { Error } from "../Error";
 import { Loading } from "../Loading";
 
 export const SearchResults = ({
-  initialData,
   nameQuery,
   status,
   gender,
+  initialData,
 }: {
-  initialData?: IInfo<ICharacter[]>;
   nameQuery: string;
   status: Status | "";
   gender: Gender | "";
+  initialData: IInfo<ICharacter[]>;
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const {
@@ -36,6 +36,7 @@ export const SearchResults = ({
         pageParam: pageParam,
       }),
     {
+      initialData: { pageParams: [undefined], pages: [initialData] },
       getNextPageParam: (lastPage) => {
         if (lastPage.info.next) {
           return currentPage + 1;
@@ -67,23 +68,16 @@ export const SearchResults = ({
       <h2 className="w-full mx-auto xl:max-w-7xl text-xs sm:text-sm font-bold tracking-wide uppercase text-slate-700 text-left p-5 pt-0 mb-4">
         Number of relevant beings:{" "}
         <strong className="font-extrabold text-md">
-          {initialData
-            ? initialData?.info?.count
-            : data?.pages[0].info.count}
+          {data?.pages[0].info.count}
         </strong>
       </h2>
       <div className="grid xl:max-w-7xl px-4 grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 mx-auto">
-        {/* {data &&
+        {data &&
           data.pages.map((page) =>
             page.results.map((character: ICharacter) => {
               return <CharacterItem key={character.id} data={character} />;
             })
-          )} */}
-
-        {initialData &&
-          initialData?.results?.map((character: ICharacter) => {
-            return <CharacterItem key={character.id} data={character} />;
-          })}
+          )}
       </div>
       <div className="relative w-full flex justify-center">
         <LoadMore
