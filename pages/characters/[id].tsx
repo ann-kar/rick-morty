@@ -1,62 +1,50 @@
-import { useRouter } from "next/router";
-import { useQuery } from "react-query";
 import Image from "next/image";
 import { ClipboardListIcon } from "@heroicons/react/solid";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import { EyeIcon } from "@heroicons/react/solid";
 
 import { FavButton } from "../../components/FavButton";
-import { Services } from "../../services/services";
 import { SectionHeader } from "../../components/characterPage/SectionHeader";
 import { SectionItem } from "../../components/characterPage/SectionItem";
 import { Loading } from "../../components/Loading";
 import { Error } from "../../components/Error";
+import { ICharacter } from "../../interfaces/interfaces";
 
-export const CharacterProfile = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const { isLoading, error, data } = useQuery(
-    ["getCharacter", { id: Number(id) }],
-    () =>
-      Services.getCharacter({
-        id: Number(id),
-      })
-  );
+const CharacterProfile = ({characterData}:{characterData:ICharacter}) => {
 
   const iconClassNames = "h-8 w-8 mr-2";
-  const episodeNumber = data?.episode[0].substring(
-    data.episode[0].lastIndexOf("/") + 1
+  const episodeNumber = characterData?.episode[0].substring(
+    characterData.episode[0].lastIndexOf("/") + 1
   );
 
-  if (isLoading) {
-    return <Loading />;
-  }
-  if (error) {
-    return <Error />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+  // if (error) {
+  //   return <Error />;
+  // }
 
   return (
     <div>
       <div className="md:h-64 w-full bg-gray-100">
         <div className="w-9/10 sm:w-4/5 max-w-7xl mx-auto h-full items-center sm:hidden">
-          <Image alt={data.name} src={data.image} width="350" height="350" />
+          <Image alt={characterData.name} src={characterData.image} width="350" height="350" />
           <h1 className="p-2 text-4xl sm:text-5xl md:text-7xl font-getSchwifty font-bold pl-8">
-            {data.name}
+            {characterData.name}
           </h1>
         </div>
         <div className="hidden sm:flex w-9/10 sm:w-4/5 max-w-7xl mx-auto h-full items-center">
           <div className="sm:w-1/3 sm:min-w-[250px] bg-black h-full">
             <Image
-              alt={data.name}
-              src={data.image}
+              alt={characterData.name}
+              src={characterData.image}
               width="256px"
               height="256px"
               className="rounded-md"
             />
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-getSchwifty font-bold pl-8">
-            {data.name}
+            {characterData.name}
           </h1>
         </div>
       </div>
@@ -67,11 +55,11 @@ export const CharacterProfile = () => {
             icon={<ClipboardListIcon className={iconClassNames} />}
           />
           <div className="flex w-full gap-3 md:flex-wrap">
-            <SectionItem label={"status"} info={data.status} />
-            <SectionItem label={"gender"} info={data.gender} />
-            <SectionItem label={"species"} info={data.species} />
+            <SectionItem label={"status"} info={characterData.status} />
+            <SectionItem label={"gender"} info={characterData.gender} />
+            <SectionItem label={"species"} info={characterData.species} />
           </div>
-          {data.type && <SectionItem label={"type"} info={data.type} />}
+          {characterData.type && <SectionItem label={"type"} info={characterData.type} />}
         </section>
         <div className="w-full md:w-2/3 pl-1">
           <section className="flex flex-wrap text-left gap-3 p-1">
@@ -80,8 +68,8 @@ export const CharacterProfile = () => {
               icon={<LocationMarkerIcon className={iconClassNames} />}
             />
             <div className="flex flex-wrap gap-2 w-full md:flex-nowrap">
-              <SectionItem label={"at birth"} info={data.origin.name} />
-              <SectionItem label={"current"} info={data.location.name} />
+              <SectionItem label={"at birth"} info={characterData.origin.name} />
+              <SectionItem label={"current"} info={characterData.location.name} />
             </div>
           </section>
           <section className="flex flex-wrap w-full text-left gap-3 p-1">
@@ -93,7 +81,7 @@ export const CharacterProfile = () => {
           </section>
         </div>
         <section className="w-full md:w-1/3 py-4 flex items-bottom justify-end">
-          <FavButton data={data} />
+          <FavButton data={characterData} />
         </section>
       </div>
     </div>
@@ -101,3 +89,38 @@ export const CharacterProfile = () => {
 };
 
 export default CharacterProfile;
+
+export async function getStaticPaths() {
+  const paths = await getAllIds(); // uwaga na format danych, który zwraca ta funkcja!
+  console.log("paths: ", paths);
+  return {
+    paths,
+    fallback: false, // ścieżki niezwrócone przez getStaticPaths zwrócą 404
+  };
+}
+
+async function getAllIds() {
+  const res = await fetch("https://rickandmortyapi.com/api/character/");
+  const data = await res.json();
+  const ids = new Array(await data.info.count).fill("0").map((el, i) => {
+    return { params: { id: (i + 1).toString() } };
+  });
+  return ids;
+}
+
+async function getCharacterData (id:string) {
+  const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+  const data = await res.json();
+  return data;
+}
+
+export async function getStaticProps({ params }:any) {
+  // Fetch necessary data for the blog post using params.id
+  const characterData = await getCharacterData(params.id);
+  return {
+    props: {
+      characterData
+    },
+  };
+}
+
