@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Gender, Status } from "../interfaces/interfaces";
 import qs from "qs";
+import { ALL_CHARACTERS_URL } from "./endpoints";
 
-const url = "https://rickandmortyapi.com/api/character/";
+const url = ALL_CHARACTERS_URL;
 
 export interface IFilters {
   name?: string;
